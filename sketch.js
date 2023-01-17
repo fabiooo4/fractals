@@ -2,6 +2,8 @@ let slider;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  // Slider to determine the angle
   slider = createSlider(0, PI, PI/4, 0.01);
   slider.position(10, 10);
 }
@@ -45,16 +47,20 @@ function squareFractal(x1, y1, x2, y2) {
 }
 
 function fractalTree(length) {
-  let angle = slider.value();
+  let angle = slider.value(); // Value from the slider
+
+  // Trunk of the tree
   line(0, 0, 0, -length);
 
-  if (length > 4) {
+  if (length > 6) {
+    // Right branch
     push();
     translate(0, -length);
     rotate(angle);
     fractalTree(length * 0.67);
     pop();
 
+    // Left branch
     push();
     translate(0, -length);
     rotate(-angle);
